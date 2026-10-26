@@ -1,39 +1,14 @@
-# Projet à compléter : entraîner et comparer des modèles
+# TP0 — Entraîner, évaluer et comparer des modèles
 
-Vous écrivez vous-mêmes le chargement des données, le découpage entraînement / test, les modèles à comparer et leur évaluation. La structure du projet et les tests sont fournis : **les tests disent ce qui est attendu**, et vous avez fini quand ils passent tous.
+Ce TP (Lab 2.1, séance 3) consiste à compléter un projet Python reproductible qui charge
+des données, les découpe en jeu d'entraînement et jeu de test, entraîne plusieurs modèles
+et les compare à une baseline, avec une métrique choisie selon le coût des erreurs.
 
-## 1. Installer (une fois)
+Le même code a été appliqué à deux prototypes, en changeant seulement `monprojet/config.py` :
 
-```
-python -m venv .venv
-.venv\Scripts\Activate.ps1          # Windows ; macOS/Linux : source .venv/bin/activate
-pip install -r requirements.txt
-python -m pytest                    # au départ : 7 failed, 1 passed (c'est normal)
-```
+- **MaintAI** : prédire les pannes de machines à partir de relevés de capteurs
+  (classification, métrique : rappel).
+- **CantineAI** : prévoir le nombre de repas servis le lendemain dans une cantine scolaire
+  (régression sur série temporelle, métrique : MAE).
 
-## 2. Régler config.py
-
-Votre fichier CSV dans `data/`, puis dans `monprojet/config.py` : `DATA_PATH`, `TARGET`, `TASK`, `MAIN_METRIC` (celle de votre section 5), `SPLIT` et `TIME_COLUMN` pour une série temporelle, `TEXT_COLUMN` pour du texte libre. Pas encore de données ? Gardez l'exemple `data/exemple_pannes.csv`.
-
-## 3. Écrire le code, fonction par fonction
-
-| Ordre | Fichier | Fonction | Tests qui passent ensuite |
-|---|---|---|---|
-| 1 | `monprojet/data.py` | `load_data()`, `split()` | 3 passed |
-| 2 | `monprojet/models.py` | `candidates()` : la baseline d'abord, puis au moins trois modèles | 5 passed |
-| 3 | `monprojet/train.py` | `evaluate()`, puis `main()` | 8 passed |
-
-Chaque fonction contient un commentaire `TODO` qui dit ce qu'elle doit faire et quelles fonctions de pandas ou scikit-learn utiliser. `feature_columns()` et `build_preprocessing()` sont fournies.
-
-Après chaque fonction : `python -m pytest`. Une fois tout écrit : `python -m monprojet.train` affiche le tableau de comparaison.
-
-## 4. Choisir
-
-Remplissez `docs/choix-modele.md` : les résultats sur le jeu de test, le modèle retenu, l'écart avec la baseline, le critère d'acceptation atteint ou non.
-
-## Ce que produit l'entraînement
-
-| Fichier | Contenu |
-|---|---|
-| `models/model.joblib` | Le meilleur modèle selon la métrique principale |
-| `models/metrics.json` | `main_metric`, `best`, et les scores de tous les modèles |
+Les résultats et le choix des modèles sont détaillés dans le dossier `docs/`.
