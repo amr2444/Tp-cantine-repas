@@ -1,0 +1,12 @@
+# Environnements virtuels
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Systeme
+.DS_Store
+Thumbs.db
