@@ -1,6 +1,6 @@
 # ADR 002 : Validation des relevés et comportement sans modèle
 
-Date : 26/10/2026 · Auteurs : EL BELLAOUI AMR
+Date : 26/10/2026 · Auteurs : EL BELLAOUI AMR , BENLAAMA Issam
 
 ## Contexte
 L'API MaintAI reçoit des relevés de capteurs envoyés par d'autres programmes (tableau de bord, application mobile, système de l'atelier). Une valeur impossible, due par exemple à un capteur défaillant ou à une erreur de saisie, ne doit jamais atteindre le modèle, car elle produirait une probabilité de panne sans aucun sens. Il faut donc fixer des bornes pour chaque variable.
